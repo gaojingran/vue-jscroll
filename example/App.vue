@@ -8,7 +8,7 @@
       @pullingDown="onPullingDown"
       @pullingUp="onPullingUp"
     >
-      <div class="item" v-for="(v, i) in source">{{ v }}</div>
+      <div class="item" v-for="(v, i) in source" :key="i">{{ v }}</div>
     </JScroll>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
           // 如果有新数据
           let newPage = [];
           for (let i = 0; i < 10; i++) {
-            newPage.push(+ new Date());
+            newPage.push(+new Date());
           }
           this.source = this.source.concat(newPage);
         } else {
@@ -75,4 +75,3 @@ export default {
   color: #fff;
 }
 </style>
-

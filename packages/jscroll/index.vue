@@ -1,5 +1,3 @@
-
-
 <template>
   <div ref="wrapper" class="list-wrapper">
     <!-- 滚动部分 -->
@@ -12,10 +10,10 @@
       <slot name="pullup" :pullUpLoad="pullUpLoad" :isPullUpLoad="isPullUpLoad">
         <div class="pullup-wrapper" v-if="pullUpLoad">
           <div class="before-trigger" v-if="!isPullUpLoad">
-            <span>{{pullUpTxt}}</span>
+            <span>{{ pullUpTxt }}</span>
           </div>
           <div class="after-trigger" v-else>
-            <Loading/>
+            <Loading />
           </div>
         </div>
       </slot>
@@ -28,7 +26,12 @@
       :isPullingDown="isPullingDown"
       :bubbleY="bubbleY"
     >
-      <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="pullDownRefresh">
+      <div
+        ref="pulldown"
+        class="pulldown-wrapper"
+        :style="pullDownStyle"
+        v-if="pullDownRefresh"
+      >
         <div class="before-trigger" v-if="beforePullDown">
           <Bubble
             :y="bubbleY"
@@ -40,10 +43,10 @@
         </div>
         <div class="after-trigger" v-else>
           <div v-if="isPullingDown" class="loading">
-            <Loading/>
+            <Loading />
           </div>
           <div v-else>
-            <span>{{refreshTxt}}</span>
+            <span>{{ refreshTxt }}</span>
           </div>
         </div>
       </div>
@@ -53,8 +56,8 @@
 
 <script>
 import BScroll from "better-scroll";
-import Bubble from "./Bubble";
-import Loading from "./Loading";
+import Bubble from "../bubble";
+import Loading from "../loading";
 
 const DIRECTION_H = "horizontal";
 const DIRECTION_V = "vertical";
@@ -191,7 +194,6 @@ export default {
         return;
       }
       if (this.$refs.listWrapper && (this.pullDownRefresh || this.pullUpLoad)) {
-        console.log(this.$refs.wrapper.offsetHeight);
         this.$refs.listWrapper.style.minHeight = `${
           this.$refs.wrapper.offsetHeight
         }px`;

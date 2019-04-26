@@ -1,5 +1,6 @@
 import JScroll from "./jscroll";
-const components = [JScroll];
+import JRecycleScroll from "./recycle";
+const components = [JScroll, JRecycleScroll];
 
 const install = function(Vue) {
   if (install.installed) return;
@@ -10,6 +11,6 @@ if (typeof window !== "undefined" && window.Vue) {
   install(window.Vue);
 }
 
-export { JScroll };
+export { JScroll, JRecycleScroll };
 
-export default install;
+export default { install };
