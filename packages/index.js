@@ -10,7 +10,6 @@ if (typeof window !== "undefined" && window.Vue) {
   install(window.Vue);
 }
 
-export default {
-  install,
-  JScroll
-};
+export { JScroll };
+
+export default install;
