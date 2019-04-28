@@ -1,29 +1,40 @@
 <template>
-  <div class="container">
-    <JScroll
-      ref="scroll"
-      :data="source"
-      :pullDownRefresh="{ stop: 60 }"
-      :pullUpLoad="true"
-      @pullingDown="onPullingDown"
-      @pullingUp="onPullingUp"
-    >
-      <div class="item" v-for="(v, i) in source" :key="i">{{ v }}</div>
-    </JScroll>
+  <div>
+    <div class="container">
+      <JScroll
+        ref="scroll"
+        :data="source"
+        :pullDownRefresh="{ stop: 60 }"
+        :pullUpLoad="true"
+        @pullingDown="onPullingDown"
+        @pullingUp="onPullingUp"
+      >
+        <div class="item" v-for="(v, i) in source" :key="i">{{ v }}</div>
+      </JScroll>
+    </div>
+
+    <div class="container">
+      <JRecycleScroll></JRecycleScroll>
+    </div>
   </div>
 </template>
 
 <script>
 import JScroll from "../packages/jscroll";
+import JRecycleScroll from "../packages/recycle";
 export default {
   name: "App",
   components: {
-    JScroll
+    JScroll,
+    JRecycleScroll
   },
   data() {
     return {
       source: [1, 2, 3]
     };
+  },
+  mounted() {
+    console.log(this.$el)
   },
   methods: {
     onPullingDown() {
@@ -65,7 +76,7 @@ export default {
   padding: 0;
 }
 .container {
-  height: 400px;
+  height: 200px;
   overflow: hidden;
 }
 .item {
