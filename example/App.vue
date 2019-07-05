@@ -12,29 +12,20 @@
         <div class="item" v-for="(v, i) in source" :key="i">{{ v }}</div>
       </JScroll>
     </div>
-
-    <div class="container">
-      <JRecycleScroll></JRecycleScroll>
-    </div>
   </div>
 </template>
 
 <script>
 import JScroll from "../packages/jscroll";
-import JRecycleScroll from "../packages/recycle";
 export default {
   name: "App",
   components: {
     JScroll,
-    JRecycleScroll
   },
   data() {
     return {
-      source: [1, 2, 3]
+      source: [1, 2, 3],
     };
-  },
-  mounted() {
-    console.log(this.$el)
   },
   methods: {
     onPullingDown() {
@@ -65,7 +56,7 @@ export default {
           this.$refs.scroll.forceUpdate();
         }
       }, 1500);
-    }
+    },
   }
 };
 </script>
