@@ -2,10 +2,8 @@
   <div ref="wrapper" class="list-wrapper">
     <!-- 滚动部分 -->
     <div class="scroll-content" ref="scrollContent">
-      <div ref="listWrapper">
-        <!-- 列表item -->
-        <slot></slot>
-      </div>
+      <!-- 列表item -->
+      <slot></slot>
       <!-- 上拉加载更多 -->
       <slot name="pullup" :pullUpLoad="pullUpLoad" :isPullUpLoad="isPullUpLoad">
         <div class="pullup-wrapper" v-if="pullUpLoad">
@@ -196,14 +194,14 @@ export default {
       if (!this.$refs.wrapper) {
         return;
       }
-      if (this.$refs.listWrapper && (this.pullDownRefresh || this.pullUpLoad)) {
-        this.$refs.listWrapper.style.minHeight = `${
+      if (this.$refs.scrollContent && (this.pullDownRefresh || this.pullUpLoad)) {
+        this.$refs.scrollContent.style.minHeight = `${
           this.$refs.wrapper.offsetHeight + 1
         }px`;
       }
       // 如果横向滚动的话设置一下宽度
       if (this.freeScroll || this.direction === DIRECTION_H) {
-        this.$refs.listWrapper.style.width = this.horizontalWidth;
+        this.$refs.scrollContent.style.width = this.horizontalWidth;
       }
       const options = {
         probeType: this.probeType,

@@ -12,6 +12,16 @@
         <div class="item" v-for="(v, i) in source" :key="i">{{ v }}</div>
       </JScroll>
     </div>
+
+    <div class="horizontal">
+       <JScroll
+        direction="horizontal"
+        horizontalWidth="2000px"
+        :data="source"
+      >
+        <div class="item" v-for="(v, i) in source" :key="i">{{ v }}</div>
+      </JScroll>
+    </div>
   </div>
 </template>
 
@@ -24,7 +34,7 @@ export default {
   },
   data() {
     return {
-      source: [1, 2, 3],
+      source: [1,2,3],
     };
   },
   methods: {
@@ -69,6 +79,16 @@ export default {
 .container {
   height: 200px;
   overflow: hidden;
+}
+.horizontal {
+  height: 200px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.horizontal .item {
+  float: left;
+  width: 300px;
+  margin: 0 24px;
 }
 .item {
   height: 60px;
