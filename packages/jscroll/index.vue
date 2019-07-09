@@ -148,7 +148,10 @@ export default {
     arrowStrokeColor: {
       type: String,
       default: "rgb(170, 170, 170)"
-    }
+    },
+    horizontalWidth: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -195,8 +198,12 @@ export default {
       }
       if (this.$refs.listWrapper && (this.pullDownRefresh || this.pullUpLoad)) {
         this.$refs.listWrapper.style.minHeight = `${
-          this.$refs.wrapper.offsetHeight
+          this.$refs.wrapper.offsetHeight + 1
         }px`;
+      }
+      // 如果横向滚动的话设置一下宽度
+      if (this.freeScroll || this.direction === DIRECTION_H) {
+        this.$refs.listWrapper.style.width = this.horizontalWidth;
       }
       const options = {
         probeType: this.probeType,
