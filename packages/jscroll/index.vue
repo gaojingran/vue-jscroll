@@ -24,12 +24,7 @@
       :isPullingDown="isPullingDown"
       :bubbleY="bubbleY"
     >
-      <div
-        ref="pulldown"
-        class="pulldown-wrapper"
-        :style="pullDownStyle"
-        v-if="pullDownRefresh"
-      >
+      <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="pullDownRefresh">
         <div class="before-trigger" v-if="beforePullDown">
           <Bubble
             :y="bubbleY"
@@ -148,8 +143,8 @@ export default {
       default: "rgb(170, 170, 170)"
     },
     horizontalWidth: {
-      type: String,
-    },
+      type: String
+    }
   },
   data() {
     return {
@@ -194,15 +189,15 @@ export default {
       if (!this.$refs.wrapper) {
         return;
       }
-      if (this.$refs.scrollContent && (this.pullDownRefresh || this.pullUpLoad)) {
-        this.$refs.scrollContent.style.minHeight = `${
-          this.$refs.wrapper.offsetHeight + 1
-        }px`;
+      if (
+        this.$refs.scrollContent &&
+        (this.pullDownRefresh || this.pullUpLoad)
+      ) {
+        this.$refs.scrollContent.style.minHeight = `${this.$refs.wrapper
+          .offsetHeight + 1}px`;
       }
       // 如果横向滚动的话设置一下宽度
-      if (this.freeScroll || this.direction === DIRECTION_H) {
-        this.$refs.scrollContent.style.width = this.horizontalWidth;
-      }
+      this._setHorizontalWidth();
       const options = {
         probeType: this.probeType,
         click: this.click,
@@ -279,6 +274,13 @@ export default {
         this.refresh();
       }
     },
+    _setHorizontalWidth() {
+      if (this.$refs.scrollContent) {
+        if (this.freeScroll || this.direction === DIRECTION_H) {
+          this.$refs.scrollContent.style.width = this.horizontalWidth;
+        }
+      }
+    },
     _initPullDownRefresh() {
       this.scroll.on("pullingDown", () => {
         this.beforePullDown = false;
@@ -334,6 +336,10 @@ export default {
       setTimeout(() => {
         this.forceUpdate(true);
       }, this.refreshDelay);
+    },
+    horizontalWidth(val) {
+      // 如果横向滚动的话设置一下宽度
+      this._setHorizontalWidth();
     }
   }
 };
