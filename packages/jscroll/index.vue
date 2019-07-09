@@ -144,6 +144,10 @@ export default {
     },
     horizontalWidth: {
       type: String
+    },
+    observeDOM: {
+      type: Boolean,
+      default: false,
     }
   },
   data() {
@@ -199,6 +203,7 @@ export default {
       // 如果横向滚动的话设置一下宽度
       this._setHorizontalWidth();
       const options = {
+        observeDOM: this.observeDOM,
         probeType: this.probeType,
         click: this.click,
         scrollY: this.freeScroll || this.direction === DIRECTION_V,
