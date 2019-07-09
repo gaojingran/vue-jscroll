@@ -145,6 +145,10 @@ export default {
     horizontalWidth: {
       type: String
     },
+    eventPassthrough: {
+      type: String,
+      default: '',
+    },
     observeDOM: {
       type: Boolean,
       default: false,
@@ -206,6 +210,7 @@ export default {
         observeDOM: this.observeDOM,
         probeType: this.probeType,
         click: this.click,
+        eventPassthrough: this.eventPassthrough,
         scrollY: this.freeScroll || this.direction === DIRECTION_V,
         scrollX: this.freeScroll || this.direction === DIRECTION_H,
         scrollbar: this.scrollbar,
