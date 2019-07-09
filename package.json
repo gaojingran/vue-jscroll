@@ -1,6 +1,6 @@
 {
   "name": "vue-jscroll",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "./lib/vueJscroll.common.js",
   "private": false,
   "author": "gaojingran",
